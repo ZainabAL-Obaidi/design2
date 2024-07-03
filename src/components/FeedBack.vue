@@ -27,23 +27,25 @@ export default {
     checkAnswers() {
       const answers = this.$route.query;
 
-      // Example logic to check answers and generate feedback
-      if (answers.question1 === 'a') {
-        this.results.push('Question 1: Correct!');
+      const correctAnswers = { question1: 'c', question2: 'b', question3: 'a' };
+
+      // Logic to check answers and generate feedback
+      if (answers.question1 === correctAnswers.question1) {
+        this.results.push('Question 1: Correct! Receive" is the correct spelling according to standard English spelling rules. The word "receive" follows the rule "i before e except after c," which means that in words where the vowel sound is a long "ee" and comes after the letter "c," the "e" comes before the "i." This is an exception to the usual rule of "i before e.');
       } else {
-        this.results.push('Question 1: Incorrect. Your answer was incorrect.');
+        this.results.push(`Question 1: Incorrect. Your answer was ${answers.question1}. The correct answer is ${correctAnswers.question1} "Receive". The word receive follows standard English spelling rules, specifically the exception i before e except after c, where the vowel sound is a long ee and comes after the letter c. This rule dictates that the e comes before the i, which is an exception to the usual spelling rule of i before e.`);
       }
 
-      if (answers.question2 === 'b') {
-        this.results.push('Question 2: Correct!');
+      if (answers.question2 === correctAnswers.question2) {
+        this.results.push('Question 2: Correct! Because "Went" is the correct past tense form of "go". It follows the standard English grammar rules for forming past tense sentences.');
       } else {
-        this.results.push('Question 2: Incorrect. Your answer was incorrect.');
+        this.results.push(`Question 2: Incorrect. Your answer was ${answers.question2}. The correct answer is ${correctAnswers.question2}."They went to the beach." because "Went" is the correct past tense form of "go". It follows the standard English grammar rules for forming past tense sentences.`);
       }
 
-      if (answers.question3 === 'c') {
-        this.results.push('Question 3: Correct!');
+      if (answers.question3 === correctAnswers.question3) {
+        this.results.push('Question 3: Correct! Because ephemeral is an adjective that describes something that is short-lived, transient, or lasting for a brief period.');
       } else {
-        this.results.push('Question 3: Incorrect. Your answer was incorrect.');
+        this.results.push(`Question 3: Incorrect. Your answer was ${answers.question3}. The correct answer is ${correctAnswers.question3} "Lasting for a short time; fleeting". Because ephemeral is an adjective that describes something that is short-lived, transient, or lasting for a brief period.`);
       }
 
       this.feedbackReady = true; // Set flag to true once feedback is ready to display
@@ -52,7 +54,7 @@ export default {
       // Reset results and navigate to start of the test
       this.results = [];
       this.feedbackReady = false;
-      this.$router.push('/question1');
+      this.$router.push('/HomePage');
     }
   }
 };
@@ -101,5 +103,4 @@ export default {
   background-color: white;
   color: black;
 }
-
 </style>

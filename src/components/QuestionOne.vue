@@ -4,10 +4,10 @@
       <h2>Question 1: Spelling</h2>
       <p>Which option is the correct spelling?</p>
       <ul>
-        <li @click="selectAnswer('a')">a) Receive</li>
-        <li @click="selectAnswer('b')">b) Receive</li>
+        <li @click="selectAnswer('a')">a) Recieve</li>
+        <li @click="selectAnswer('b')">b) Recieve</li>
         <li @click="selectAnswer('c')">c) Receive</li>
-        <li @click="selectAnswer('d')">d) Receive</li>
+        <li @click="selectAnswer('d')">d) Recive</li>
       </ul>
       <input type="text" v-model="userAnswer" @keydown.enter="handleAnswer" placeholder="Type your answer...">
       <button @click="nextQuestion">Next</button>
@@ -19,7 +19,7 @@
 export default {
   data() {
     return {
-      correctAnswer: '' // Define correct answer for Question 1
+      userAnswer: '' // Store user's answer for Question 1
     };
   },
   methods: {
@@ -33,21 +33,15 @@ export default {
     },
     selectAnswer(answer) {
       console.log('Selected Answer:', answer);
-      // Store the selected answer in your data or Vuex store
+      // Pass the selected answer to the next question through route query
+      this.$router.push({ path: '/question2', query: { ...this.$route.query, question1: answer } });
     },
     nextQuestion() {
-      if (this.$route.path === '/question1') {
-        this.$router.push('/question2');
-      } else if (this.$route.path === '/question2') {
-        this.$router.push('/question3');
-      } else {
-        this.$router.push('/'); // Redirect to start or results page after last question
-      }
+      this.selectAnswer(this.userAnswer);
     }
   }
 };
 </script>
-
 
 <style scoped>
 .question-container {
@@ -110,5 +104,4 @@ export default {
   background-color: white;
   color: black;
 }
-
 </style>

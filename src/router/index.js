@@ -6,12 +6,12 @@ import QuestionThree from '../components/QuestionThree.vue';
 import FeedBack from '../components/FeedBack.vue'; // Import FeedBack component
 
 const routes = [
-  { path: '/', component: HomePage },
+  { path: '/HomePage', component: HomePage },
   { path: '/question1', component: QuestionOne },
   { path: '/question2', component: QuestionTwo },
   { path: '/question3', component: QuestionThree },
   { path: '/feedback', component: FeedBack }, // Add route for FeedBack component
-  { path: '/', redirect: '/question1' } // Default redirect to first question
+  { path: '/', redirect: '/HomePage' } // Default redirect to Home Page
 ];
 
 const router = createRouter({

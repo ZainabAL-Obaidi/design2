@@ -3,7 +3,9 @@
     <div class="content-box">
       <h1>Welcome to the English Test</h1>
       <div class="intro-text">
-        <p>This test will assess your English proficiency. Please answer the following questions.</p>
+        <p>This website will help you assess your English proficiency through multiple-choice questions<br>
+            covering various aspects of the English language. Click "Start Test" whenever you feel ready.</p>
+
         <router-link to="/question1">
           <button class="start-button">Start Test</button>
         </router-link>

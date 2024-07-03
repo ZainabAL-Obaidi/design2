@@ -5,8 +5,8 @@
       <p>Which sentence has correct grammar?</p>
       <ul>
         <li @click="selectAnswer('a')">a) He seen the movie last night.</li>
-        <li @click="selectAnswer('b')">b) She have gone to the store.</li>
-        <li @click="selectAnswer('c')">c) They went to the beach.</li>
+        <li @click="selectAnswer('b')">b) They went to the beach.</li>
+        <li @click="selectAnswer('c')">c) She have gone to the store.</li>
         <li @click="selectAnswer('d')">d) I done my homework.</li>
       </ul>
       <input type="text" v-model="userAnswer" @keydown.enter="handleAnswer">
@@ -15,13 +15,12 @@
   </div>
 </template>
 
-
 <script>
 export default {
   data() {
     return {
-      correctAnswer: '' // Define correct answer for Question 2   
-      };
+      userAnswer: '' // Store user's answer for Question 2
+    };
   },
   methods: {
     handleAnswer() {
@@ -34,16 +33,11 @@ export default {
     },
     selectAnswer(answer) {
       console.log('Selected Answer:', answer);
-      // Store the selected answer in your data or Vuex store
+      // Pass the selected answer to the next question through route query
+      this.$router.push({ path: '/question3', query: { ...this.$route.query, question2: answer } });
     },
     nextQuestion() {
-      if (this.$route.path === '/question1') {
-        this.$router.push('/question2');
-      } else if (this.$route.path === '/question2') {
-        this.$router.push('/question3');
-      } else {
-        this.$router.push('/'); // Redirect to start or results page after last question
-      }
+      this.selectAnswer(this.userAnswer);
     }
   }
 };
@@ -110,5 +104,4 @@ export default {
   background-color: white;
   color: black;
 }
-
 </style>
